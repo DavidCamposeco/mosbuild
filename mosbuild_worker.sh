@@ -1113,78 +1113,9 @@ COMP_C1_C7 () {
 		cancelBuild "** Error: Install failed"
 	fi
 
-	echo "** Compile Libnpupnp 4.0.14"
-	cp ./moode/other/upmpdcli/libnpupnp-4.0.14.tar.gz ./
-	tar xfz ./libnpupnp-4.0.14.tar.gz
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Un-tar failed"
-	fi
-	cd libnpupnp-4.0.14
-	./configure --prefix=/usr --sysconfdir=/etc
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Configure failed"
-	fi
-	make
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Make failed"
-	fi
-	make install
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Install failed"
-	fi
-	echo "** Cleanup"
-	cd ..
-	rm -rf ./libnpupnp-4.0.14*
-
-	echo "** Compile Libupnpp 0.20.1"
-	cp ./moode/other/upmpdcli/libupnpp-0.20.1.tar.gz ./
-	tar xfz ./libupnpp-0.20.1.tar.gz
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Un-tar failed"
-	fi
-	cd libupnpp-0.20.1
-	./configure --prefix=/usr --sysconfdir=/etc
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Configure failed"
-	fi
-	make
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Make failed"
-	fi
-	make install
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Install failed"
-	fi
-	echo "** Cleanup"
-	cd ..
-	rm -rf ./libupnpp-0.20.1*
-
-	echo "** Compile Upmpdcli 1.5.8"
-	cp ./moode/other/upmpdcli/upmpdcli-1.5.8.tar.gz ./
-	tar xfz ./upmpdcli-1.5.8.tar.gz
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Un-tar failed"
-	fi
-	cd upmpdcli-1.5.8
-	./autogen.sh
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Autogen failed"
-	fi
-	./configure --prefix=/usr --sysconfdir=/etc
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Configure failed"
-	fi
-	make
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Make failed"
-	fi
-	make install
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Install failed"
-	fi
-	echo "** Cleanup"
-	cd ..
-	rm -rf ./upmpdcli-1.5.8*
+	echo "** Install upmpdcli packages"
+	cp -r ./moode/other/upmpdcli/ ./
+	sudo ./install_upnp.sh
 
 	echo "** Configure runtime env"
 	useradd upmpdcli
@@ -1194,29 +1125,9 @@ COMP_C1_C7 () {
 	systemctl daemon-reload
 	systemctl disable upmpdcli
 
-	echo "** Compile python3-libupnpp"
-
-	cp ./moode/other/upmpdcli/libupnpp-bindings-0.20.1.tar.gz ./
-	tar xfz libupnpp-bindings-0.20.1.tar.gz
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Un-tar failed"
-	fi
-	cd libupnpp-bindings-0.20.1
-	./configure --prefix=/usr PYTHON_VERSION=3
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Configure failed"
-	fi
-	make
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Make failed"
-	fi
-	sudo make install
-	if [ $? -ne 0 ] ; then
-		cancelBuild "** Error: Install failed"
-	fi
 	echo "** Cleanup"
 	cd ..
-	rm -rf ./libupnpp-bindings-0.20.1*
+	rm -rf ./upmpdcli
 
 	echo "** Reboot 9"
 	echo "C8_C9" > $MOSBUILD_STEP
