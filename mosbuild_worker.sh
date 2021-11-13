@@ -224,16 +224,16 @@ STEP_3B_4 () {
 	fi
 
 	echo "** Install meson"
-	cp ./moode/other/meson-ninja/meson-0.55.0.tar.gz ./
-	tar xfz meson-0.55.0.tar.gz
-	cd meson-0.55.0
+	cp ./moode/other/meson-ninja/meson-0.59.2.tar.gz ./
+	tar xfz meson-0.59.2.tar.gz
+	cd meson-0.59.2
 	python3 setup.py install
 	if [ $? -ne 0 ] ; then
 		cancelBuild "** Error: Install failed"
 	fi
 
 	cd ..
-	rm -rf meson-0.55.0*
+	rm -rf meson*
 
 	DEBIAN_FRONTEND=noninteractive apt-get clean
 	if [ $? -ne 0 ] ; then
