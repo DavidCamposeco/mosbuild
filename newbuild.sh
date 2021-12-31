@@ -59,10 +59,10 @@ mainBanner () {
 }
 
 sethostname () {
-    sed -i "s/raspberrypi/moode/" part2/etc/hostname
-	sed -i "s/raspberrypi/moode/" part2/etc/hosts
+    sed -i "s/raspberrypi/Wabeat/" part2/etc/hostname
+	sed -i "s/raspberrypi/Wabeat/" part2/etc/hosts
 	cp /etc/fake-hwclock.data part2/etc/ 2> /dev/null
-	echo "** Change host name to moode"
+	echo "** Change host name to Wabeat"
 }
 	
 
@@ -73,5 +73,6 @@ sethostname () {
 ##//////////////////////////////////////////////////////////////
 smallBanner
 mainBanner
+sethostname
 
 #directYBanner
