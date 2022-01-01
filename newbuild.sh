@@ -58,6 +58,11 @@ mainBanner () {
 	echo "**"
 }
 
+setUpInstallVariables () {
+    OSBUILD_DIR=/home/pi/osbuild
+    mkdir /home/pi/osbuild
+}
+
 setHostName () {
     sed -i "s/raspberrypi/Wabeat/" /etc/hostname
 	sed -i "s/raspberrypi/Wabeat/" /etc/hosts
@@ -439,6 +444,7 @@ installMPDDevpck () {
 # STEP 1
 smallBanner
 mainBanner
+setUpInstallVariables
 setHostName
 # reboot 
 
