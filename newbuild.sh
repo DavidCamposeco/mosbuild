@@ -442,44 +442,46 @@ installMPDDevpck () {
 ##//////////////////////////////////////////////////////////////
 
 # STEP 1
-smallBanner
-mainBanner
-setUpInstallVariables
-setHostName
+#smallBanner
+
+
+#mainBanner
+#setUpInstallVariables
+#setHostName
 # reboot 
 
 # Step 2
-changeUserPassword
-bootConfigFile
+#changeUserPassword
+#bootConfigFile
 # reboot
 
 # STEP 3A - apt update & upgrade"
-basicOptimizations
-refreshOSPacks
+#basicOptimizations
+#refreshOSPacks
 # reboot
 
 #  STEP 3B - Install core packages"
-installCorePacks
-cleanPacks
+#installCorePacks
+#cleanPacks
 #installMeson
 #cleanPacks
 #installMediaInfo
-installAlsaCap
+#installAlsaCap
 #installGlueDisks
-sysCtlConfig
+#sysCtlConfig
 # STEP 4 - Install enhanced networking" (NO REBOOT!)
-installHostAPMode
-installBlueTooth
-compileBluez
-installbluezAlsa
-cleanPacks
+#installHostAPMode
+#installBlueTooth
+#compileBluez
+#installbluezAlsa
+#cleanPacks
 # reboot
 
 # STEP 5 - Install Rotary encoder driver
 #installWirePi
 # STEP 6 - Install MPD and MPC" (NO REBOOT!)
-createMPDruntime
-installMPDDevpck
+#createMPDruntime
+#installMPDDevpck
 
 
 #reboot
